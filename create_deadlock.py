@@ -17,6 +17,9 @@ def pick_sushi(name, first_spoon, sec_spoon):
         sec_spoon.release()
 
 if __name__ == '__main__':
+    #Remove deadlock by prioritising locks. highest-spoon_a,mid-spoon_b,low-spoon_c
     threading.Thread(target=pick_sushi, args=('A', spoon_a, spoon_b)).start()
     threading.Thread(target=pick_sushi, args=('B', spoon_b, spoon_c)).start()
-    threading.Thread(target=pick_sushi, args=('C', spoon_c, spoon_a)).start()
+    # To create deadlock
+    # threading.Thread(target=pick_sushi, args=('C', spoon_c, spoon_a)).start()
+    threading.Thread(target=pick_sushi, args=('C', spoon_a, spoon_c)).start()
