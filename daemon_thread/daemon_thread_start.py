@@ -1,3 +1,7 @@
+'''
+In this code, the cleaner thread(background thread) keeps cleaning the kitchen
+even after chef is done cooking.
+'''
 import threading
 import time
 
@@ -8,7 +12,6 @@ def infinite_thread():
 
 if __name__ == '__main__':
     cleaner = threading.Thread(target=infinite_thread)
-    cleaner.daemon = True
     cleaner.start()
 
     print('Chef is cooking')
